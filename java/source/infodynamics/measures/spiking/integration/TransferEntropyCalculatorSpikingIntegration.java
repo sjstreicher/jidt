@@ -101,7 +101,7 @@ public class TransferEntropyCalculatorSpikingIntegration implements TransferEntr
 	protected KdTree kdTreeConditioningAtSamples = null;
 
 	// Cache these to return with the local values:
-	protected double[] timeToPreviousRelevantSourceSpikes;
+	protected double[][] arrayedJointEmbeddingsFromSpikes;
 	
 	public static final String KNNS_PROP_NAME = "Knns";
 
@@ -418,14 +418,12 @@ public class TransferEntropyCalculatorSpikingIntegration implements TransferEntr
 		// Convert the vectors to arrays so that they can be put in the trees
 		// Embeddings from target spikes:
 		double[][] arrayedTargetEmbeddingsFromSpikes = new double[conditioningEmbeddingsFromSpikes.size()][numDestPastIntervals + numCondPastIntervals];
-		double[][] arrayedJointEmbeddingsFromSpikes = new double[conditioningEmbeddingsFromSpikes.size()][numDestPastIntervals +
+		arrayedJointEmbeddingsFromSpikes = new double[conditioningEmbeddingsFromSpikes.size()][numDestPastIntervals +
 														  numCondPastIntervals + numSourcePastIntervals];
 		for (int i = 0; i < conditioningEmbeddingsFromSpikes.size(); i++) {
 			arrayedTargetEmbeddingsFromSpikes[i] = conditioningEmbeddingsFromSpikes.elementAt(i);
 			arrayedJointEmbeddingsFromSpikes[i] = jointEmbeddingsFromSpikes.elementAt(i);
 		}
-		// Store locally the lag times from most recent relevant source spike for each target spike, for later return with locals:
-		timeToPreviousRelevantSourceSpikes = MatrixUtils.selectColumn(arrayedJointEmbeddingsFromSpikes, numDestPastIntervals + numCondPastIntervals);
 		// Sample points:
 		double[][] arrayedTargetEmbeddingsFromSamples = new double[conditioningEmbeddingsFromSamples.size()][numDestPastIntervals + numCondPastIntervals];
 		double[][] arrayedJointEmbeddingsFromSamples = new double[conditioningEmbeddingsFromSamples.size()][numDestPastIntervals +
@@ -967,15 +965,16 @@ public class TransferEntropyCalculatorSpikingIntegration implements TransferEntr
 	
 	// Data structure to return local values from this estimator
 	public class SpikingTELocalValues implements SpikingLocalInformationValues {
-		public double[] contributionsAtEachSpike;
-		public double[] timeToMostRecentSourceSpike;
+		public double[] contributionsAtEachSpike; // Will have zeros for the spikes which are part of the first embedding
+		public double[][] jointEmbeddingsAtSpikes; // Rows here correspond to each target spike we computed a local TE for.
+					// First numDestPastIntervals columns are for the target embedded ISIs,
+					// next numCondPastIntervals columns are for any ISIs relevant to conditional variables,
+					// and last numSourcePastIntervals columns are for the ISIs relevant to the source spikes
 		
 		public SpikingTELocalValues(double[] contributionsAtEachSpike) {
 			this.contributionsAtEachSpike = contributionsAtEachSpike;
-			int numTargetSpikesToSkip = MatrixUtils.max(destPastIntervals);
-			this.timeToMostRecentSourceSpike = new double[numTargetSpikesToSkip + timeToPreviousRelevantSourceSpikes.length];
-			System.arraycopy(timeToPreviousRelevantSourceSpikes, 0, this.timeToMostRecentSourceSpike, numTargetSpikesToSkip,
-					timeToPreviousRelevantSourceSpikes.length);
+			// int numTargetSpikesToSkip = MatrixUtils.max(destPastIntervals);
+			this.jointEmbeddingsAtSpikes = arrayedJointEmbeddingsFromSpikes;
 		}
 	}
 	
