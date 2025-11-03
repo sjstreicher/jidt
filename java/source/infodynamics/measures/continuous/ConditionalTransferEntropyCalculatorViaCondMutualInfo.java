@@ -77,7 +77,7 @@ public class ConditionalTransferEntropyCalculatorViaCondMutualInfo implements
 	 */
 	protected int k = 1;
 	/**
-	 * Embedding delay to use between elements of the destination embeding vector.
+	 * Embedding delay to use between elements of the destination embedding vector.
 	 * We're hard-coding a delay of 1 between the history vector and the next 
 	 *  observation however.
 	 */
@@ -87,7 +87,7 @@ public class ConditionalTransferEntropyCalculatorViaCondMutualInfo implements
 	 */
 	protected int l = 1;
 	/**
-	 * Embedding delay to use between elements of the source embeding vector.
+	 * Embedding delay to use between elements of the source embedding vector.
 	 */
 	protected int l_tau = 1;
 	/**
@@ -295,7 +295,7 @@ public class ConditionalTransferEntropyCalculatorViaCondMutualInfo implements
 		//  embedding itself determines where we can start taking observations, or
 		//  the case where the source embedding plus delay is longer and so determines
 		//  where we can start taking observations, or the case where
-		//  the conditional embeding plus delay is longer and so determines
+		//  the conditional embedding plus delay is longer and so determines
 		//  where we can start taking observations
 		int startTimeBasedOnDestPast = (k-1)*k_tau;
 		int startTimeBasedOnSourcePast = (l-1)*l_tau + delay - 1;

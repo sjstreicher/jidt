@@ -512,7 +512,7 @@ public class TransferEntropyCalculatorSpikingIntegration implements TransferEntr
 				}
 			}
 
-			// Add the embeding intervals from the conditional processes
+			// Add the embedding intervals from the conditional processes
 			int indexOfNextEmbeddingInterval = numDestPastIntervals;
 			for (int i = 0; i < vectorOfCondPastIntervals.size(); i++) {
 				for (int j = 0; j < vectorOfCondPastIntervals.elementAt(i).length; j++) {

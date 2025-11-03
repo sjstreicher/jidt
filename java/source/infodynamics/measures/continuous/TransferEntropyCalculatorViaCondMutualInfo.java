@@ -97,7 +97,7 @@ public class TransferEntropyCalculatorViaCondMutualInfo implements
 	 */
 	protected int k = 1;
 	/**
-	 * Embedding delay to use between elements of the destination embeding vector.
+	 * Embedding delay to use between elements of the destination embedding vector.
 	 * We're hard-coding a delay of 1 between the history vector and the next 
 	 *  observation however.
 	 */
@@ -107,7 +107,7 @@ public class TransferEntropyCalculatorViaCondMutualInfo implements
 	 */
 	protected int l = 1;
 	/**
-	 * Embedding delay to use between elements of the source embeding vector.
+	 * Embedding delay to use between elements of the source embedding vector.
 	 */
 	protected int l_tau = 1;
 	/**

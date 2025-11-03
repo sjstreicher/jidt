@@ -143,10 +143,10 @@ public class AutoAnalyserCTE extends AutoAnalyser
 				"Destination history embedding length (k_HISTORY)",
 				"Destination history embedding delay (k_TAU)",
 				"Source history embedding length (l_HISTORY)",
-				"Source history embeding delay (l_TAU)",
+				"Source history embedding delay (l_TAU)",
 				"Delay from source to destination (in time steps)",
 				"Conditional history embedding length",
-				"Conditional history embeding delay",
+				"Conditional history embedding delay",
 				"Delay from conditional to destination (in time steps)"
 		};
 		commonContPropertyValueChoices = new String[][] {

@@ -103,7 +103,7 @@ public class AutoAnalyserTE extends AutoAnalyserChannelCalculator
 				"Destination history embedding length (k_HISTORY)",
 				"Destination history embedding delay (k_TAU)",
 				"Source history embedding length (l_HISTORY)",
-				"Source history embeding delay (l_TAU)",
+				"Source history embedding delay (l_TAU)",
 				"Delay from source to destination (in time steps)",
 		};
 		discretePropertyValueChoices = new String[][] {
@@ -156,7 +156,7 @@ public class AutoAnalyserTE extends AutoAnalyserChannelCalculator
 		gaussianPropertyDescriptions = new String[] {
 				"Destination history embedding delay (k_TAU)",
 				"Source history embedding length (l_HISTORY)",
-				"Source history embeding delay (l_TAU)",
+				"Source history embedding delay (l_TAU)",
 				"Delay from source to destination (in time steps)",
 				"Whether the analytically determined bias (as the mean of the<br/>" +
 						"surrogate distribution) will be subtracted from all" +
@@ -258,7 +258,7 @@ public class AutoAnalyserTE extends AutoAnalyserChannelCalculator
 		kraskovPropertyDescriptions = new String[] {
 				"Destination history embedding delay (k_TAU)",
 				"Source history embedding length (l)",
-				"Source history embeding delay (l_TAU)",
+				"Source history embedding delay (l_TAU)",
 				"Delay from source to destination (in time steps)",
 				"(boolean) whether to normalise <br/>each incoming time-series to mean 0, standard deviation 1, or not (default true, recommended)",
 				"Number of k nearest neighbours to use <br/>in the full joint kernel space in the KSG algorithm",

@@ -75,7 +75,7 @@ public class ActiveInfoStorageCalculatorViaMutualInfo implements
 	 */
 	protected int k = 1;
 	/**
-	 * Embedding delay to use between elements of the embeding vector.
+	 * Embedding delay to use between elements of the embedding vector.
 	 * We're hard-coding a delay of 1 between the history vector and the next 
 	 *  observation however.
 	 */
